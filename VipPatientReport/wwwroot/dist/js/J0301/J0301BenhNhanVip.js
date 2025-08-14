@@ -677,27 +677,32 @@ function bindDateRangeValidation() {
     return {start: startDate, end: endDate };
 		}
 
-    function updateDates() {
-			const year = parseInt($('#yearInput').val(), 10) || currentYear;
+        function updateDates() {
+            const year = parseInt($('#yearInput').val(), 10) || currentYear;
 
-    if (selectedValue === 'Nam') {
-        $('#ngayTuNgay').val(`01-01-${year}`);
-    $('#ngayDenNgay').val(`31-12-${year}`);
-			}
-    else if (selectedValue === 'Quy') {
-				const quy = parseInt($('#quyInput').val(), 10) || 1;
-    const startMonth = (quy - 1) * 3 + 1;
-    const endMonth = startMonth + 2;
-    $('#ngayTuNgay').val(formatDate(new Date(year, startMonth - 1, 1)));
-    $('#ngayDenNgay').val(formatDate(new Date(year, endMonth, 0)));
-			}
-    else if (selectedValue === 'Thang') {
-const month = parseInt($('#thangInput').val(), 10) || currentMonth;
-    const {start, end} = getMonthDateRange(year, month);
-    $('#ngayTuNgay').val(formatDate(start));
-    $('#ngayDenNgay').val(formatDate(end));
-			}
-		}
+            if (selectedValue === 'Nam') {
+                $('#ngayTuNgay').val(`01-01-${year}`);
+                $('#ngayDenNgay').val(`31-12-${year}`);
+            }
+            else if (selectedValue === 'Quy') {
+                const quy = parseInt($('#quyInput').val(), 10) || 1;
+                const startMonth = (quy - 1) * 3 + 1;
+                const endMonth = startMonth + 2;
+                $('#ngayTuNgay').val(formatDate(new Date(year, startMonth - 1, 1)));
+                $('#ngayDenNgay').val(formatDate(new Date(year, endMonth, 0)));
+            }
+            else if (selectedValue === 'Thang') {
+                const month = parseInt($('#thangInput').val(), 10) || currentMonth;
+                const { start, end } = getMonthDateRange(year, month);
+                $('#ngayTuNgay').val(formatDate(start));
+                $('#ngayDenNgay').val(formatDate(end));
+            }
+
+           
+            $('#ngayTuNgay').datepicker('setDate', $('#ngayTuNgay').val());
+            $('#ngayDenNgay').datepicker('setDate', $('#ngayDenNgay').val());
+        }
+
 
     // ======= Tạo dropdown =======
     createDropdownInput('yearInput', 'Năm', Array.from({length: currentYear - 1999 }, (_, i) => 2000 + i), currentYear, updateDates);
