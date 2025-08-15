@@ -49,7 +49,7 @@ public class S0301BenhNhanVip : I0301BenhNhanVip
         }
 
         var allData = await _dbService.Tien_Mau01
-            .FromSqlRaw("EXEC Tien_ThongKeBenhNhanDKKhamVip @TuNgay, @DenNgay, @IdChiNhanh",
+            .FromSqlRaw("EXEC S0301_ThongKeBenhNhanDKKhamVip @TuNgay, @DenNgay, @IdChiNhanh",
                 new SqlParameter("@TuNgay", tuNgay),
                 new SqlParameter("@DenNgay", denNgay),
                 new SqlParameter("@IdChiNhanh", IDChiNhanh))

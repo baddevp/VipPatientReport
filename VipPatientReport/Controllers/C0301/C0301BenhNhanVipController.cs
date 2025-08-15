@@ -7,15 +7,29 @@ namespace VipPatientReport.Controllers.C0301
     [Route("benhnhanvip")]
     public class C0301BenhNhanVipController : Controller
     {
-        private readonly I0301BenhNhanVip _service;
+        //private string _maChucNang = "benhnhanvip";
+        //private IMemoryCachingServices _memoryCache;
 
-        public C0301BenhNhanVipController(I0301BenhNhanVip service)
+
+        private readonly I0301BenhNhanVip _service;
+        
+        public C0301BenhNhanVipController(I0301BenhNhanVip service /*, IMemoryCachingServices memoryCache*/)
         {
             _service = service;
+
+            //_memoryCache = memoryCache;
         }
 
         public IActionResult Index()
         {
+            /*
+            var quyenVaiTro = await _memoryCache.getQuyenVaiTro(_maChucNang);
+            if(quyenVaiTro == null){
+                return RedirectToAction("NotFound", "Home");
+            }
+            ViewBag.quyenVaiTro = quyenVaiTro;
+            ViewData["Title"] = CommonServices.toEmptyData(quyenVaiTro);
+             */
             ViewBag.quyenVaiTro = new
             {
                 Them = true,

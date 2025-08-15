@@ -105,6 +105,7 @@ function updateTable(response) {
     if (data.length > 0) {
         data.forEach((item, index) => {
             const stt = (currentPage - 1) * pageSize + index + 1;
+            let isChecked = item.TrangThai ? "checked" : "";
             const row = `
                 <tr>
                     <td class="text-center text-nowrap">${stt}</td>
@@ -121,7 +122,7 @@ function updateTable(response) {
                     <td>${item.phongKham || item.PhongKham || ''}</td>
                     <td>${formatDate(item.thoiGianTiepNhan || item.thoiGianTiepNhan)}</td>
                     <td class="text-center text-nowrap">${item.nguoiTiepNhan || item.NguoiTiepNhan || ''}</td>
-                    <td style="text-align:left;">${item.TrangThai ? "Đã khám" : "Chưa khám" || ''}</td>
+                    <td class="text-center"><input type="checkbox" ${isChecked} class="" disabled /></td>
 
                 </tr>
             `;
@@ -189,7 +190,8 @@ function filterData(isPagination = false) {
         }
     }
 
-    $('#loadingSpinner').show();
+    showSpinner();
+    //$('#loadingSpinner').show();
     $('.table').css('opacity', '0.5');
     console.log(tuNgay + " : " + denNgay);
     $.ajax({
@@ -223,7 +225,8 @@ function filterData(isPagination = false) {
                 ;
         },
         complete: function () {
-            $('#loadingSpinner').hide();
+            //$('#loadingSpinner').hide();
+            hideSpinner();
             $('.table').css('opacity', '1');
         }
     });
@@ -737,22 +740,31 @@ function bindDateRangeValidation() {
 
     if (selectedValue === 'Quy') {
         createDropdownInput('quyInput', 'Quý', [1, 2, 3, 4], currentQuy, updateDates);
-        $('#select-date-area').hide();
        
 		} else if (selectedValue === 'Thang') {
         createDropdownInput('thangInput', 'Tháng', Array.from({ length: 12 }, (_, i) => i + 1), currentMonth, updateDates);
-        $('#select-date-area').hide();
 		} else if (selectedValue === 'Ngay') {
         container.empty();
-        $('#select-date-area').show();
+       
 		}
 
     if (selectedValue !== 'Ngay') {
         updateDates();
-		}
+        }
+      if (selectedValue === 'Nam' || selectedValue === 'Quy' || selectedValue === 'Thang') {
+            $('#ngayTuNgay, #ngayDenNgay').prop('disabled', true);
+        } else {
+            $('#ngayTuNgay, #ngayDenNgay').prop('disabled', false);
+        }
 	});
 //=============== GLOBAL FUNCTION =======================
 function parseDMY(s) {
     const parts = s.split('-');
     return new Date(parts[2], parts[1] - 1, parts[0]);
+}
+function showSpinner() {
+    document.getElementById("loadingSpinner").style.display = "flex";
+}
+function hideSpinner() {
+    document.getElementById("loadingSpinner").style.display = "none";
 }
