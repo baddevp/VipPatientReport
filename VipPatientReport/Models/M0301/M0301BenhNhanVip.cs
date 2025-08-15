@@ -66,6 +66,6 @@ namespace VipPatientReport.Models.M0301
         public bool TrangThai { get; set; } = false;
 
         [Display(Name = "Chi nhánh")]
-        public int IdChiNhanh { get; set; }
+        public long IdChiNhanh { get; set; }
     }
 }

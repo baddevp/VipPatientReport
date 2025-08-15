@@ -29,7 +29,7 @@ namespace VipPatientReport.Controllers.C0301
         }
 
         [HttpPost("filter")]
-        public async Task<IActionResult> FilterByDay(string tuNgay, string denNgay, long IdChiNhanh, int page = 1, int pageSize = 10)
+        public async Task<IActionResult> FilterByDay(string tuNgay, string denNgay, int IdChiNhanh, int page = 1, int pageSize = 10)
         {
             var result = await _service.FilterByDayAsync(tuNgay, denNgay, IdChiNhanh, page, pageSize);
 

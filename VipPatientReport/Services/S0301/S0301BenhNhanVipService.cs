@@ -23,7 +23,7 @@ public class S0301BenhNhanVip : I0301BenhNhanVip
     }
 
     public async Task<(bool Success, string Message, object Data, object DoanhNghiep, int TotalRecords, int TotalPages, int CurrentPage)>
-    FilterByDayAsync(string tuNgay, string denNgay, long IDChiNhanh, int page = 1, int pageSize = 10)
+    FilterByDayAsync(string tuNgay, string denNgay, int IDChiNhanh, int page = 1, int pageSize = 10)
     {
         var doanhNghiep = await _dbService.ThongTinDoanhNghieps
             .Where(d => d.IDChiNhanh == IDChiNhanh)

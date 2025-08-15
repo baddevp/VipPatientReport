@@ -50,8 +50,8 @@ namespace VipPatientReport.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("IdChiNhanh")
-                        .HasColumnType("int");
+                    b.Property<long>("IdChiNhanh")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("MaTiepNhan")
                         .IsRequired()
@@ -116,7 +116,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-1",
                             HoTen = "Lê Văn Cường",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0001",
                             MaYTe = "MYT0001",
                             NamSinh = 1989,
@@ -125,7 +125,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK102",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "GS. D",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 8, 14, 27, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 9, 14, 27, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -135,7 +135,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-1",
                             HoTen = "Hoàng Văn Inh",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0002",
                             MaYTe = "MYT0002",
                             NamSinh = 1979,
@@ -144,7 +144,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK202",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. B",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 12, 11, 29, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 13, 11, 29, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -154,7 +154,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-1",
                             HoTen = "Đặng Văn Hoa",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0003",
                             MaYTe = "MYT0003",
                             NamSinh = 2000,
@@ -163,7 +163,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK202",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. B",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 22, 15, 35, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 23, 15, 35, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -173,7 +173,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-1",
                             HoTen = "Trần Văn Kim",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0004",
                             MaYTe = "MYT0004",
                             NamSinh = 1992,
@@ -182,7 +182,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK101",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. B",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 29, 7, 17, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 30, 7, 17, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -192,7 +192,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-3",
                             HoTen = "Bùi Văn Em",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0005",
                             MaYTe = "MYT0005",
                             NamSinh = 1995,
@@ -201,7 +201,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK202",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. B",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 27, 11, 14, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 28, 11, 14, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -211,7 +211,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-3",
                             HoTen = "Vũ Văn Kim",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0006",
                             MaYTe = "MYT0006",
                             NamSinh = 1971,
@@ -220,7 +220,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK202",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. A",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 4, 14, 18, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 5, 14, 18, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -230,7 +230,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-2",
                             HoTen = "Đặng Văn Hoa",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0007",
                             MaYTe = "MYT0007",
                             NamSinh = 1972,
@@ -239,7 +239,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK102",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. C",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 29, 12, 5, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 30, 12, 5, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -249,7 +249,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-3",
                             HoTen = "Nguyễn Văn Giang",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0008",
                             MaYTe = "MYT0008",
                             NamSinh = 1969,
@@ -258,7 +258,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK101",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. C",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 6, 10, 55, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 7, 10, 55, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -268,7 +268,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-3",
                             HoTen = "Hoàng Văn Dung",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0009",
                             MaYTe = "MYT0009",
                             NamSinh = 1999,
@@ -277,7 +277,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK201",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. B",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 21, 11, 24, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 22, 11, 24, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -287,7 +287,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-3",
                             HoTen = "Đặng Văn Phương",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0010",
                             MaYTe = "MYT0010",
                             NamSinh = 2000,
@@ -296,7 +296,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK102",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. B",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 8, 7, 44, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 9, 7, 44, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -306,7 +306,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-3",
                             HoTen = "Đặng Văn Inh",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0011",
                             MaYTe = "MYT0011",
                             NamSinh = 1976,
@@ -315,7 +315,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK102",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. A",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 20, 7, 42, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 21, 7, 42, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -325,7 +325,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-2",
                             HoTen = "Nguyễn Văn Bình",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0012",
                             MaYTe = "MYT0012",
                             NamSinh = 1981,
@@ -334,7 +334,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK102",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. C",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 1, 11, 55, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 2, 11, 55, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -344,7 +344,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-3",
                             HoTen = "Nguyễn Văn Em",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0013",
                             MaYTe = "MYT0013",
                             NamSinh = 1994,
@@ -353,7 +353,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK102",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "GS. D",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 27, 7, 3, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 28, 7, 3, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -363,7 +363,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-2",
                             HoTen = "Lê Văn Bình",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0014",
                             MaYTe = "MYT0014",
                             NamSinh = 2001,
@@ -372,7 +372,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK102",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. B",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 8, 10, 57, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 9, 10, 57, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -382,7 +382,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-1",
                             HoTen = "Võ Văn Em",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0015",
                             MaYTe = "MYT0015",
                             NamSinh = 1989,
@@ -391,7 +391,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK202",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "GS. D",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 26, 11, 24, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 27, 11, 24, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -401,7 +401,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-1",
                             HoTen = "Hoàng Văn Dung",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0016",
                             MaYTe = "MYT0016",
                             NamSinh = 1988,
@@ -410,7 +410,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK101",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "GS. D",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 27, 12, 17, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 28, 12, 17, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -420,7 +420,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-3",
                             HoTen = "Hoàng Văn Bình",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0017",
                             MaYTe = "MYT0017",
                             NamSinh = 1984,
@@ -429,7 +429,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK101",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. B",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 26, 14, 54, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 27, 14, 54, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -439,7 +439,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-1",
                             HoTen = "Vũ Văn Bình",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0018",
                             MaYTe = "MYT0018",
                             NamSinh = 1993,
@@ -448,7 +448,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK201",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "GS. D",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 13, 8, 19, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 14, 8, 19, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -458,7 +458,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-3",
                             HoTen = "Vũ Văn Inh",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0019",
                             MaYTe = "MYT0019",
                             NamSinh = 1992,
@@ -467,7 +467,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK102",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. C",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 10, 9, 35, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 11, 9, 35, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -477,7 +477,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-3",
                             HoTen = "Bùi Văn Em",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0020",
                             MaYTe = "MYT0020",
                             NamSinh = 1977,
@@ -486,7 +486,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK201",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. A",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 26, 8, 22, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 27, 8, 22, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -496,7 +496,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-2",
                             HoTen = "Võ Văn Phương",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0021",
                             MaYTe = "MYT0021",
                             NamSinh = 1975,
@@ -505,7 +505,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK201",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. C",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 26, 9, 43, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 27, 9, 43, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -515,7 +515,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-1",
                             HoTen = "Đặng Văn Kim",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0022",
                             MaYTe = "MYT0022",
                             NamSinh = 1973,
@@ -524,7 +524,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK202",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "GS. D",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 6, 15, 59, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 7, 15, 59, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -534,7 +534,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-3",
                             HoTen = "Võ Văn Kim",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0023",
                             MaYTe = "MYT0023",
                             NamSinh = 1993,
@@ -543,7 +543,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK202",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. C",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 2, 7, 42, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 3, 7, 42, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -553,7 +553,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-2",
                             HoTen = "Đinh Văn Hoa",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0024",
                             MaYTe = "MYT0024",
                             NamSinh = 1962,
@@ -562,7 +562,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK101",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. A",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 28, 14, 13, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 29, 14, 13, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -572,7 +572,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-3",
                             HoTen = "Bùi Văn Inh",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0025",
                             MaYTe = "MYT0025",
                             NamSinh = 1989,
@@ -581,7 +581,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK202",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. B",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 14, 16, 40, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 15, 16, 40, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -591,7 +591,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-2",
                             HoTen = "Nguyễn Văn Phương",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0026",
                             MaYTe = "MYT0026",
                             NamSinh = 1983,
@@ -600,7 +600,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK101",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. C",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 13, 8, 55, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 14, 8, 55, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -610,7 +610,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-1",
                             HoTen = "Trần Văn Giang",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0027",
                             MaYTe = "MYT0027",
                             NamSinh = 1968,
@@ -619,7 +619,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK202",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "GS. D",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 29, 13, 22, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 30, 13, 22, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -629,7 +629,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-1",
                             HoTen = "Đặng Văn Kim",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0028",
                             MaYTe = "MYT0028",
                             NamSinh = 1992,
@@ -638,7 +638,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK101",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. B",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 20, 9, 24, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 21, 9, 24, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -648,7 +648,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-2",
                             HoTen = "Vũ Văn An",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0029",
                             MaYTe = "MYT0029",
                             NamSinh = 1978,
@@ -657,7 +657,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK102",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. A",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 4, 13, 58, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 5, 13, 58, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -667,7 +667,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-2",
                             HoTen = "Võ Văn Phương",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0030",
                             MaYTe = "MYT0030",
                             NamSinh = 1963,
@@ -676,7 +676,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK101",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. B",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 14, 16, 4, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 15, 16, 4, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -686,7 +686,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-1",
                             HoTen = "Lê Văn Hoa",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0031",
                             MaYTe = "MYT0031",
                             NamSinh = 1980,
@@ -695,7 +695,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK102",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. C",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 29, 9, 57, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 30, 9, 57, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -705,7 +705,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-1",
                             HoTen = "Võ Văn Bình",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0032",
                             MaYTe = "MYT0032",
                             NamSinh = 1968,
@@ -714,7 +714,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK201",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. A",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 27, 7, 29, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 28, 7, 29, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -724,7 +724,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-2",
                             HoTen = "Nguyễn Văn Dung",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0033",
                             MaYTe = "MYT0033",
                             NamSinh = 1999,
@@ -733,7 +733,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK101",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. B",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 17, 15, 16, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 18, 15, 16, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -743,7 +743,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-2",
                             HoTen = "Võ Văn An",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0034",
                             MaYTe = "MYT0034",
                             NamSinh = 1990,
@@ -752,7 +752,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK201",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. C",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 18, 13, 47, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 19, 13, 47, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -762,7 +762,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-1",
                             HoTen = "Võ Văn Cường",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0035",
                             MaYTe = "MYT0035",
                             NamSinh = 1997,
@@ -771,7 +771,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK202",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. A",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 12, 10, 22, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 13, 10, 22, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -781,7 +781,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-3",
                             HoTen = "Trần Văn An",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0036",
                             MaYTe = "MYT0036",
                             NamSinh = 2003,
@@ -790,7 +790,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK101",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. C",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 27, 11, 7, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 28, 11, 7, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -800,7 +800,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-2",
                             HoTen = "Đặng Văn Kim",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0037",
                             MaYTe = "MYT0037",
                             NamSinh = 1971,
@@ -809,7 +809,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK202",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. A",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 6, 13, 6, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 7, 13, 6, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -819,7 +819,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-2",
                             HoTen = "Vũ Văn An",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0038",
                             MaYTe = "MYT0038",
                             NamSinh = 2000,
@@ -828,7 +828,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK202",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. A",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 2, 16, 12, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 3, 16, 12, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -838,7 +838,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-3",
                             HoTen = "Hoàng Văn Cường",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0039",
                             MaYTe = "MYT0039",
                             NamSinh = 1966,
@@ -847,7 +847,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK202",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. C",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 26, 8, 26, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 27, 8, 26, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -857,7 +857,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-1",
                             HoTen = "Đinh Văn An",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0040",
                             MaYTe = "MYT0040",
                             NamSinh = 2000,
@@ -866,7 +866,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK201",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "GS. D",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 21, 9, 26, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 22, 9, 26, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -876,7 +876,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-2",
                             HoTen = "Nguyễn Văn Bình",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0041",
                             MaYTe = "MYT0041",
                             NamSinh = 1976,
@@ -885,7 +885,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK102",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. C",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 11, 10, 5, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 12, 10, 5, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -895,7 +895,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-1",
                             HoTen = "Hoàng Văn Giang",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0042",
                             MaYTe = "MYT0042",
                             NamSinh = 2004,
@@ -904,7 +904,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK201",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. B",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 9, 11, 4, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 10, 11, 4, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -914,7 +914,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-2",
                             HoTen = "Vũ Văn Inh",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0043",
                             MaYTe = "MYT0043",
                             NamSinh = 1983,
@@ -923,7 +923,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK102",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. B",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 11, 15, 40, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 12, 15, 40, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -933,7 +933,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-2",
                             HoTen = "Phạm Văn Em",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0044",
                             MaYTe = "MYT0044",
                             NamSinh = 1969,
@@ -942,7 +942,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK102",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. C",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 23, 8, 5, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 24, 8, 5, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -952,7 +952,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-2",
                             HoTen = "Hoàng Văn Cường",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0045",
                             MaYTe = "MYT0045",
                             NamSinh = 1999,
@@ -961,7 +961,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK102",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. C",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 14, 11, 9, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 15, 11, 9, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -971,7 +971,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-2",
                             HoTen = "Vũ Văn Cường",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0046",
                             MaYTe = "MYT0046",
                             NamSinh = 1980,
@@ -980,7 +980,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK201",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. A",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 22, 12, 54, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 23, 12, 54, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         },
                         new
@@ -990,7 +990,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-2",
                             HoTen = "Bùi Văn Inh",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0047",
                             MaYTe = "MYT0047",
                             NamSinh = 1967,
@@ -999,7 +999,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK101",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. A",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 4, 10, 32, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 5, 10, 32, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -1009,7 +1009,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nam",
                             GoiKham = "VIP-2",
                             HoTen = "Trần Văn Hoa",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0048",
                             MaYTe = "MYT0048",
                             NamSinh = 2000,
@@ -1018,7 +1018,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK201",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "GS. D",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 29, 15, 32, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 30, 15, 32, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -1028,7 +1028,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-3",
                             HoTen = "Đinh Văn Em",
-                            IdChiNhanh = 1,
+                            IdChiNhanh = 1L,
                             MaTiepNhan = "MTN0049",
                             MaYTe = "MYT0049",
                             NamSinh = 1973,
@@ -1037,7 +1037,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK202",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. B",
-                            ThoiGianTiepNhan = new DateTime(2025, 7, 19, 13, 15, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 7, 20, 13, 15, 0, 0, DateTimeKind.Local),
                             TrangThai = true
                         },
                         new
@@ -1047,7 +1047,7 @@ namespace VipPatientReport.Migrations
                             GioiTinh = "Nữ",
                             GoiKham = "VIP-3",
                             HoTen = "Vũ Văn Bình",
-                            IdChiNhanh = 2,
+                            IdChiNhanh = 2L,
                             MaTiepNhan = "MTN0050",
                             MaYTe = "MYT0050",
                             NamSinh = 1975,
@@ -1056,7 +1056,7 @@ namespace VipPatientReport.Migrations
                             PhongKham = "PK101",
                             QuocTich = "Việt Nam",
                             TenChuyenGia = "BS. C",
-                            ThoiGianTiepNhan = new DateTime(2025, 8, 7, 15, 35, 0, 0, DateTimeKind.Local),
+                            ThoiGianTiepNhan = new DateTime(2025, 8, 8, 15, 35, 0, 0, DateTimeKind.Local),
                             TrangThai = false
                         });
                 });

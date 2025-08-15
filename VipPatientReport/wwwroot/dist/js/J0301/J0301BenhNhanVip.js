@@ -107,11 +107,11 @@ function updateTable(response) {
             const stt = (currentPage - 1) * pageSize + index + 1;
             const row = `
                 <tr>
-                    <td>${stt}</td>
-                    <td>${item.maYTe || item.MaYTe || ''}</td>
-                    <td>${item.maTiepNhan || item.MaTiepNhan || ''}</td>
-                    <td style="text-align:left;">${item.hoTen || item.HoTen || 'Không rõ'}</td>
-                    <td>${item.namSinh || item.NamSinh || ''}</td>
+                    <td class="text-center text-nowrap">${stt}</td>
+                    <td class="text-center text-nowrap">${item.maYTe || item.MaYTe || ''}</td>
+                    <td class="text-center text-nowrap">${item.maTiepNhan || item.MaTiepNhan || ''}</td>
+                    <td class="text-nowrap">${item.hoTen || item.HoTen || 'Không rõ'}</td>
+                    <td class="text-center text-nowrap">${item.namSinh || item.NamSinh || ''}</td>
                     <td>${item.gioiTinh || item.GioiTinh || ''}</td>
                     <td>${item.cccd || item.CCCD || ''}</td>
                     <td>${item.passport || item.Passport || ''}</td>
@@ -120,7 +120,7 @@ function updateTable(response) {
                     <td style="text-align:left;">${item.goiKham || item.GoiKham || 'Không rõ'}</td>
                     <td>${item.phongKham || item.PhongKham || ''}</td>
                     <td>${formatDate(item.thoiGianTiepNhan || item.thoiGianTiepNhan)}</td>
-                    <td>${item.nguoiTiepNhan || item.NguoiTiepNhan || ''}</td>
+                    <td class="text-center text-nowrap">${item.nguoiTiepNhan || item.NguoiTiepNhan || ''}</td>
                     <td style="text-align:left;">${item.TrangThai ? "Đã khám" : "Chưa khám" || ''}</td>
 
                 </tr>
@@ -128,7 +128,7 @@ function updateTable(response) {
             tbody.append(row);
         });
     } else {
-        tbody.append('<tr><td colspan="8" class="text-center">Không có dữ liệu</td></tr>');
+        tbody.append('<tr><td colspan="15" class="text-center">Không có dữ liệu</td></tr>');
     }
 }
 
@@ -191,7 +191,7 @@ function filterData(isPagination = false) {
 
     $('#loadingSpinner').show();
     $('.table').css('opacity', '0.5');
-
+    console.log(tuNgay + " : " + denNgay);
     $.ajax({
         url: '/benhnhanvip/filter',
         type: 'POST',
@@ -213,6 +213,15 @@ function filterData(isPagination = false) {
                 console.error("Có lỗi khi lọc dữ liệu");
             }
         },
+        error: function (xhr, st, err) {
+            console.error("AJAX call failed!");
+            console.error("HTTP Status:", xhr.status); // 500
+            console.error("Status Text:", xhr.statusText); // Internal Server Error
+            console.error("Error Message:", err);
+            console.error("Response Text:", xhr.responseText); // Nội dung lỗi từ server
+            reject(err || st || xhr)
+                ;
+        },
         complete: function () {
             $('#loadingSpinner').hide();
             $('.table').css('opacity', '1');
@@ -228,7 +237,15 @@ function ajaxFilterRequest(payload) {
             type: 'POST',
             data: payload,
             success: function (resp) { resolve(resp); },
-            error: function (xhr, st, err) { reject(err || st || xhr); }
+            error: function (xhr, st, err) {
+                console.error("AJAX call failed!");
+                console.error("HTTP Status:", xhr.status); // 500
+                console.error("Status Text:", xhr.statusText); // Internal Server Error
+                console.error("Error Message:", error);
+                console.error("Response Text:", xhr.responseText); // Nội dung lỗi từ server
+                reject(err || st || xhr)
+                    ;
+            }
         });
     });
 }
@@ -720,10 +737,14 @@ function bindDateRangeValidation() {
 
     if (selectedValue === 'Quy') {
         createDropdownInput('quyInput', 'Quý', [1, 2, 3, 4], currentQuy, updateDates);
+        $('#select-date-area').hide();
+       
 		} else if (selectedValue === 'Thang') {
         createDropdownInput('thangInput', 'Tháng', Array.from({ length: 12 }, (_, i) => i + 1), currentMonth, updateDates);
+        $('#select-date-area').hide();
 		} else if (selectedValue === 'Ngay') {
         container.empty();
+        $('#select-date-area').show();
 		}
 
     if (selectedValue !== 'Ngay') {
