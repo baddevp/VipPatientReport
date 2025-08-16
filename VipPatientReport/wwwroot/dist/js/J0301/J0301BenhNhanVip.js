@@ -765,7 +765,7 @@ $('#selectGiaiDoan').change(function () {
             .off('blur', '#quyInput')
             .on('blur', '#quyInput', function () {
                 let val = parseInt($(this).val(), 10);
-                if (!Number.isFinite(val) || val < 1 || val > 4) val = 1;
+                if (!Number.isFinite(val) || val < 1 || val > 4) val = currentQuy;
                 $(this).val(val);
 
                 $('#quyInputDropdown').find('.dropdown-item').removeClass('active bg-primary text-white');
@@ -783,7 +783,7 @@ $('#selectGiaiDoan').change(function () {
             .off('blur', '#thangInput')
             .on('blur', '#thangInput', function () {
                 let val = parseInt($(this).val(), 10);
-                if (!Number.isFinite(val) || val < 1 || val > 12) val = 1;
+                if (!Number.isFinite(val) || val < 1 || val > 12) val = currentMonth;
                 $(this).val(val);
 
                 $('#thangInputDropdown').find('.dropdown-item').removeClass('active bg-primary text-white');
