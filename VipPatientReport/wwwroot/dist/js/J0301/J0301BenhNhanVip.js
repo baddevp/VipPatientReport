@@ -555,6 +555,20 @@ $('#selectGiaiDoan').change(function () {
             const typedVal = parseInt($input.val(), 10);
             const typedIsAllowed = Number.isFinite(typedVal) && (values.includes(typedVal) || id === 'yearInput');
 
+            let highlightVal = typedVal;
+            if ((id === 'quyInput' || id === 'thangInput') &&
+                (!Number.isFinite(typedVal) ||
+                    (id === 'quyInput' && (typedVal < 1 || typedVal > 4)) ||
+                    (id === 'thangInput' && (typedVal < 1 || typedVal > 12)))) {
+
+                const now = new Date();
+                if (id === 'quyInput') {
+                    highlightVal = Math.ceil((now.getMonth() + 1) / 3);
+                } else {
+                    highlightVal = now.getMonth() + 1;
+                }
+            }
+
             let filteredValues = values.filter(v => !filter || v.toString().includes(filter));
             if (filteredValues.length === 0 && id === 'yearInput') {
                 if (Number.isFinite(typedVal)) {
@@ -567,14 +581,14 @@ $('#selectGiaiDoan').change(function () {
             }
 
             filteredValues.forEach((val, index) => {
-                const isSelected = typedIsAllowed && val === typedVal;
+                const isSelected = Number.isFinite(highlightVal) && val === highlightVal;
                 const item = $(` 
-                    <a href="#" class="dropdown-item ${isSelected ? 'active bg-primary text-white' : ''}"
-                       data-val="${val}" data-index="${index}"
-                       style="padding:8px 16px; display:block; text-decoration:none; color:#333; cursor:pointer;">
-                       ${val}
-                    </a>
-                `);
+            <a href="#" class="dropdown-item ${isSelected ? 'active bg-primary text-white' : ''}"
+               data-val="${val}" data-index="${index}"
+               style="padding:8px 16px; display:block; text-decoration:none; color:#333; cursor:pointer;">
+               ${val}
+            </a>
+        `);
                 item.on('click', function (e) {
                     e.preventDefault();
                     selectItem(val);
@@ -593,6 +607,7 @@ $('#selectGiaiDoan').change(function () {
             }
             highlightCurrentItem();
         }
+
 
         function selectItem(val) {
             $input.val(val);
@@ -637,6 +652,7 @@ $('#selectGiaiDoan').change(function () {
 
             if (isEnter && currentHighlightIndex >= 0) {
                 const val = parseInt(items.eq(currentHighlightIndex).data('val'), 10);
+                console.log("val = ", val)
                 selectItem(val);
                 return;
             }
