@@ -107,7 +107,7 @@ public class S0301BenhNhanVip : I0301BenhNhanVip
             DienThoai = ""
         };
     }
-    public async Task<byte[]> ExportBaoCaoGoiKhamPdfAsync(M0301ExportRequest request, ISession session)
+    public async Task<byte[]> ExportThongKeBenhNhanVipPdfAsync(M0301ExportRequest request, ISession session)
     {
         var doanhNghiepObj = GetDoanhNghiepFromRequestOrSession(request, session);
 
@@ -118,7 +118,7 @@ public class S0301BenhNhanVip : I0301BenhNhanVip
         document.GeneratePdf(stream);
         return stream.ToArray();
     }
-    public async Task<byte[]> ExportBaoCaoGoiKhamExcelAsync(M0301ExportRequest request, ISession session)
+    public async Task<byte[]> ExportThongKeBenhNhanVipExcelAsync(M0301ExportRequest request, ISession session)
     {
         var doanhNghiepObj = GetDoanhNghiepFromRequestOrSession(request, session);
 

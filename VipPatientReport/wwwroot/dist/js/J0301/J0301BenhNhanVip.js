@@ -84,9 +84,6 @@ function formatDate(dateString) {
 function updateTable(response) {
     const tbody = $('#data-list');
     tbody.empty();
-
-    console.log("Dữ liệu nhận được:", response);
-
     if (response.totalRecords !== undefined) {
         totalRecords = response.totalRecords;
         totalPages = response.totalPages;
@@ -191,9 +188,7 @@ function filterData(isPagination = false) {
     }
 
     showSpinner();
-    //$('#loadingSpinner').show();
     $('.table').css('opacity', '0.5');
-    console.log(tuNgay + " : " + denNgay);
     $.ajax({
         url: '/benhnhanvip/filter',
         type: 'POST',
@@ -212,20 +207,10 @@ function filterData(isPagination = false) {
                 totalPages = response.totalPages || totalPages;
                 window.doanhNghiep = response.doanhNghiep || null;
             } else {
-                console.error("Có lỗi khi lọc dữ liệu");
+                alert("Có lỗi khi lọc dữ liệu");
             }
         },
-        error: function (xhr, st, err) {
-            console.error("AJAX call failed!");
-            console.error("HTTP Status:", xhr.status); // 500
-            console.error("Status Text:", xhr.statusText); // Internal Server Error
-            console.error("Error Message:", err);
-            console.error("Response Text:", xhr.responseText); // Nội dung lỗi từ server
-            reject(err || st || xhr)
-                ;
-        },
         complete: function () {
-            //$('#loadingSpinner').hide();
             hideSpinner();
             $('.table').css('opacity', '1');
         }
@@ -239,15 +224,12 @@ function ajaxFilterRequest(payload) {
             url: '/benhnhanvip/filter',
             type: 'POST',
             data: payload,
-            success: function (resp) { resolve(resp); },
+            success: function (resp) {
+                resolve(resp);
+            },
             error: function (xhr, st, err) {
-                console.error("AJAX call failed!");
-                console.error("HTTP Status:", xhr.status); // 500
-                console.error("Status Text:", xhr.statusText); // Internal Server Error
-                console.error("Error Message:", error);
-                console.error("Response Text:", xhr.responseText); // Nội dung lỗi từ server
-                reject(err || st || xhr)
-                    ;
+                reject(err || st || xhr);
+                   
             }
         });
     });
@@ -347,7 +329,6 @@ function doExportExcel(finalData, btn, originalHtml) {
         success: function (data, status, xhr) {
             const contentType = xhr.getResponseHeader('content-type') || '';
             if (!contentType.includes('spreadsheet') && !contentType.includes('vnd.openxmlformats')) {
-                console.error('Tệp trả về không phải Excel');
                 return;
             }
             const blob = new Blob([data], { type: contentType });
@@ -361,7 +342,7 @@ function doExportExcel(finalData, btn, originalHtml) {
             window.URL.revokeObjectURL(url);
         },
         error: function () {
-            console.error('Lỗi khi tạo file Excel');
+            alert('Lỗi khi tạo file Excel');
         },
         complete: function () {
             btn.html(originalHtml);
@@ -389,7 +370,6 @@ $('#btnExportExcelGoiKham').off('click').on('click', function (e) {
                 doExportExcel(allData, btn, originalHtml);
             })
             .catch(err => {
-                console.error('Lỗi khi lấy toàn bộ dữ liệu để xuất:', err);
                 btn.html(originalHtml);
                 btn.prop('disabled', false);
             });
@@ -425,7 +405,7 @@ function doExportPdf(finalData, btnElem) {
             window.URL.revokeObjectURL(url);
         })
         .catch(error => {
-            console.error("Error:", error);
+            alert("Lỗi trong quá trình xuất file!");
         })
         .finally(() => {
             btnElem.innerHTML = '<i class="bi bi-file-earmark-pdf"></i> Xuất PDF';
@@ -451,7 +431,7 @@ $('#btnExportPDFGoiKham').off('click').on('click', function (e) {
                 doExportPdf(allData, btn);
             })
             .catch(err => {
-                console.error('Lỗi khi lấy toàn bộ dữ liệu để xuất PDF:', err);
+                alert('Lỗi khi lấy toàn bộ dữ liệu để xuất PDF:', err);
                 btn.innerHTML = '<i class="bi bi-file-earmark-pdf"></i> Xuất PDF';
                 btn.disabled = false;
             });
@@ -523,240 +503,302 @@ function bindDateRangeValidation() {
 
 
 // ==================== XỬ LÝ GIAI ĐOẠN =================
-    $('#selectGiaiDoan').change(function () {
-		const selectedValue = $(this).val();
+$('#selectGiaiDoan').change(function () {
+    const selectedValue = $(this).val();
     const container = $('#selectContainer');
     container.empty();
 
     if (selectedValue === 'Nam' || selectedValue === 'Ngay') {
         container.css('justify-content', 'flex-start');
-		} else if (selectedValue === 'Quy' || selectedValue === 'Thang') {
+    } else if (selectedValue === 'Quy' || selectedValue === 'Thang') {
         container.css('justify-content', 'space-around');
-		}
+    }
 
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth() + 1;
     const currentQuy = Math.ceil(currentMonth / 3);
 
-    // ======= Dropdown input =======
-    function createDropdownInput(id, label, values, defaultValue, onSelect) {
-			const html = `
-    <div data-dropdown-wrapper style="width: 45%; position: relative;">
-        <label class="form-label">${label}</label>
-        <input type="text" class="form-control" id="${id}" value="${defaultValue}" autocomplete="off">
-            <div id="${id}Dropdown"
-                style="display:none; position:absolute; top:100%; left:0; width:100%;
-						max-height:200px; overflow-y:auto; z-index:9999; background:white;
-						border:1px solid rgba(0,0,0,.15); border-radius:4px;
-						box-shadow:0 6px 12px rgba(0,0,0,.175);">
+    // ================== FUNCTION TẠO DROPDOWN ==================
+    function createDropdownInput(id, label, values, defaultValue, onSelect, length = 10) {
+        const html = `
+            <div data-dropdown-wrapper style="width: 45%; position: relative;">
+                <label class="form-label">${label}</label>
+                <input type="number" class="form-control" id="${id}" value="${defaultValue}" oninput="if(this.value.length > ${length}) this.value = this.value.slice(0, ${length});"  autocomplete="off">
+                <div id="${id}Dropdown"
+                    style="display:none; position:absolute; top:100%; left:0; width:100%;
+                    max-height:200px; overflow-y:auto; z-index:9999; background:white;
+                    border:1px solid rgba(0,0,0,.15); border-radius:4px;
+                    box-shadow:0 6px 12px rgba(0,0,0,.175);">
+                </div>
             </div>
-    </div>
-    `;
-    container.append(html);
+        `;
+        container.append(html);
 
-    const $input = $('#' + id);
-    const $dropdown = $('#' + id + 'Dropdown');
-    let currentHighlightIndex = -1;
+        const $input = $('#' + id);
+        const $dropdown = $('#' + id + 'Dropdown');
+        let currentHighlightIndex = -1;
 
-    function highlightCurrentItem() {
-		const items = $dropdown.find('.dropdown-item');
-        items.removeClass('active bg-primary text-white');
-	    if (currentHighlightIndex >= 0 && currentHighlightIndex < items.length) {
-            items.eq(currentHighlightIndex).addClass('active bg-primary text-white');
+        function highlightCurrentItem() {
+            const items = $dropdown.find('.dropdown-item');
+            items.removeClass('active bg-primary text-white');
+            if (currentHighlightIndex >= 0 && currentHighlightIndex < items.length) {
+                items.eq(currentHighlightIndex).addClass('active bg-primary text-white');
+                const item = items.eq(currentHighlightIndex)[0];
+                if (item) item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
 
-    // Tự động scroll đến item được chọn
-        const item = items.eq(currentHighlightIndex)[0];
-        if (item) {
-            item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-					}
-				}
-	}
+        function renderList(filter = '') {
+            $dropdown.empty();
+            currentHighlightIndex = -1;
 
-            function renderList(filter = '') {
-                $dropdown.empty();
-                currentHighlightIndex = -1;
+            const typedVal = parseInt($input.val(), 10);
+            const typedIsAllowed = Number.isFinite(typedVal) && (values.includes(typedVal) || id === 'yearInput');
 
-                const selectedVal = parseInt($input.val(), 10);
-                const fallbackVal = defaultValue;
-                const selectedOrFallback = Number.isFinite(selectedVal) ? selectedVal : fallbackVal;
-
-                let filteredValues = values.filter(v => !filter || v.toString().includes(filter));
-
-                if (!filteredValues.includes(selectedOrFallback)) {
-                    filteredValues.unshift(selectedOrFallback);
+            let filteredValues = values.filter(v => !filter || v.toString().includes(filter));
+            if (filteredValues.length === 0 && id === 'yearInput') {
+                if (Number.isFinite(typedVal)) {
+                    filteredValues = [typedVal];
+                } else {
+                    filteredValues = values.slice();
                 }
-
-                if (filteredValues.length === 0) {
-                    $dropdown.append(`<div class="dropdown-item" style="padding:8px 16px; color:#999;"></div>`);
-                    return;
-                }
-
-                filteredValues.forEach((val, index) => {
-                    const isSelected = val === selectedOrFallback;
-                    const item = $(`<a href="#" class="dropdown-item ${isSelected ? 'active bg-primary text-white' : ''}"
-							data-val="${val}" data-index="${index}"
-							style="padding:8px 16px; display:block; text-decoration:none; color:#333; cursor:pointer;">
-							${val}</a>`);
-                    item.on('click', function (e) {
-                        e.preventDefault();
-                        selectItem(val);
-                    });
-                    item.on('mouseenter', function () {
-                        currentHighlightIndex = index;
-                        highlightCurrentItem();
-                    });
-                    $dropdown.append(item);
-                    if (isSelected) {
-                        currentHighlightIndex = index;
-                    }
-                });
-
-                const items = $dropdown.find('.dropdown-item');
-                if (currentHighlightIndex === -1 && items.length) {
-                    currentHighlightIndex = 0;
-                }
-                highlightCurrentItem();
+            } else if (filteredValues.length === 0) {
+                filteredValues = values.slice();
             }
 
-            function selectItem(val) {
-                $input.val(val);
-                $dropdown.hide();
-                if (onSelect) onSelect(val);
-            }
-
-            $input.on('focus click', function () {
-                renderList();
-                $dropdown.show();
-            });
-
-            $input.on('input', function () {
-                renderList($(this).val());
-                $dropdown.show();
-            });
-
-            $input.on('keydown', function (e) {
-                const items = $dropdown.find('.dropdown-item');
-                if (!items.length) return;
-
-                const key = e.key;
-                const isUp = key === 'ArrowUp';
-                const isDown = key === 'ArrowDown';
-                const isEnter = key === 'Enter';
-                const isEscape = key === 'Escape';
-                const isTab = key === 'Tab';
-
-                if (isUp || isDown || isEnter || isEscape || isTab) {
+            filteredValues.forEach((val, index) => {
+                const isSelected = typedIsAllowed && val === typedVal;
+                const item = $(` 
+                    <a href="#" class="dropdown-item ${isSelected ? 'active bg-primary text-white' : ''}"
+                       data-val="${val}" data-index="${index}"
+                       style="padding:8px 16px; display:block; text-decoration:none; color:#333; cursor:pointer;">
+                       ${val}
+                    </a>
+                `);
+                item.on('click', function (e) {
                     e.preventDefault();
-                }
-
-                if (isUp) {
-                    currentHighlightIndex = (currentHighlightIndex <= 0) ? items.length - 1 : currentHighlightIndex - 1;
+                    selectItem(val);
+                });
+                item.on('mouseenter', function () {
+                    currentHighlightIndex = index;
                     highlightCurrentItem();
-                    return;
-                }
+                });
+                $dropdown.append(item);
+                if (isSelected) currentHighlightIndex = index;
+            });
 
-                if (isDown) {
-                    currentHighlightIndex = (currentHighlightIndex >= items.length - 1) ? 0 : currentHighlightIndex + 1;
-                    highlightCurrentItem();
-                    return;
-                }
+            const items = $dropdown.find('.dropdown-item');
+            if (currentHighlightIndex === -1 && items.length) {
+                currentHighlightIndex = 0;
+            }
+            highlightCurrentItem();
+        }
 
-                if (isEnter && currentHighlightIndex >= 0) {
+        function selectItem(val) {
+            $input.val(val);
+            $dropdown.hide();
+            if (onSelect) onSelect(val);
+        }
+
+        $input.on('focus click', function () {
+            renderList();
+            $dropdown.show();
+        });
+
+        $input.on('input', function () {
+            renderList($(this).val());
+            $dropdown.show();
+        });
+
+        $input.on('keydown', function (e) {
+            const items = $dropdown.find('.dropdown-item');
+            if (!items.length) return;
+
+            const key = e.key;
+            const isUp = key === 'ArrowUp';
+            const isDown = key === 'ArrowDown';
+            const isEnter = key === 'Enter';
+            const isEscape = key === 'Escape';
+            const isTab = key === 'Tab';
+
+            if (isUp || isDown || isEnter || isEscape || isTab) e.preventDefault();
+
+            if (isUp) {
+                currentHighlightIndex = (currentHighlightIndex <= 0) ? items.length - 1 : currentHighlightIndex - 1;
+                highlightCurrentItem();
+                return;
+            }
+
+            if (isDown) {
+                currentHighlightIndex = (currentHighlightIndex >= items.length - 1) ? 0 : currentHighlightIndex + 1;
+                highlightCurrentItem();
+                return;
+            }
+
+            if (isEnter && currentHighlightIndex >= 0) {
+                const val = parseInt(items.eq(currentHighlightIndex).data('val'), 10);
+                selectItem(val);
+                return;
+            }
+
+            if (isEscape) {
+                $dropdown.hide();
+                return;
+            }
+
+            if (isTab) {
+                if (currentHighlightIndex >= 0) {
                     const val = parseInt(items.eq(currentHighlightIndex).data('val'), 10);
                     selectItem(val);
-                    return;
                 }
+                return;
+            }
+        });
 
-                if (isEscape) {
-                    $dropdown.hide();
-                    return;
-                }
+        $(document).off('click.dropdown-' + id).on('click.dropdown-' + id, function (e) {
+            if (!$(e.target).closest('[data-dropdown-wrapper]').length) {
+                $dropdown.hide();
+            }
+        });
+    }
 
-                if (isTab) {
-                    if (currentHighlightIndex >= 0) {
-                        const val = parseInt(items.eq(currentHighlightIndex).data('val'), 10);
-                        selectItem(val);
-                    }
-                    return;
-                }
-            });
-
-            $(document).on('click', function (e) {
-                if (!$(e.target).closest('[data-dropdown-wrapper]').length) {
-                    $dropdown.hide();
-                }
-            });
-        }
-
-    // ======= Ngày/Tháng/Quý =======
+    // ================== FORMAT DATE ==================
     function formatDate(date) {
-	const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();
-    return `${day}-${month}-${year}`;
-		}
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`;
+    }
 
     function getMonthDateRange(year, month) {
-	const startDate = new Date(year, month - 1, 1);
-    const endDate = new Date(year, month, 0);
-    return {start: startDate, end: endDate };
-		}
+        const startDate = new Date(year, month - 1, 1);
+        const endDate = new Date(year, month, 0);
+        return { start: startDate, end: endDate };
+    }
 
-        function updateDates() {
-            const year = parseInt($('#yearInput').val(), 10) || currentYear;
+    function highlightYearInDropdown(year) {
+        $('#yearInputDropdown').find('.dropdown-item').removeClass('active bg-primary text-white');
+        const yearItem = $('#yearInputDropdown').find(`[data-val="${year}"]`);
+        if (yearItem.length) {
+            yearItem.addClass('active bg-primary text-white');
+            yearItem[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }
 
-            if (selectedValue === 'Nam') {
-                $('#ngayTuNgay').val(`01-01-${year}`);
-                $('#ngayDenNgay').val(`31-12-${year}`);
-            }
-            else if (selectedValue === 'Quy') {
-                let quy = parseInt($('#quyInput').val(), 10) || 1;
-                if (quy > 4) quy = 4;
-                if (quy < 1) quy = 1;
+    // ================== UPDATE DATE RANGE ==================
+    function updateDates() {
+        let yearRaw = parseInt($('#yearInput').val(), 10);
+        let year = Number.isFinite(yearRaw) ? yearRaw : currentYear;
 
-                const startMonth = (quy - 1) * 3 + 1;
-                const endMonth = startMonth + 2;
-                $('#ngayTuNgay').val(formatDate(new Date(year, startMonth - 1, 1)));
-                $('#ngayDenNgay').val(formatDate(new Date(year, endMonth, 0)));
-            }
-            else if (selectedValue === 'Thang') {
-                let month = parseInt($('#thangInput').val(), 10) || currentMonth;
-                if (month > 12) month = 12;
-                if (month < 1) month = 1;
-
-                const { start, end } = getMonthDateRange(year, month);
-                $('#ngayTuNgay').val(formatDate(start));
-                $('#ngayDenNgay').val(formatDate(end));
-            }
-
-            // Đồng bộ lại datepicker với giá trị mới
-            $('#ngayTuNgay').datepicker('setDate', $('#ngayTuNgay').val());
-            $('#ngayDenNgay').datepicker('setDate', $('#ngayDenNgay').val());
+        // Chỉ kiểm tra năm không âm
+        if (year < 0 || year > currentYear) {
+            year = currentYear;
+            $('#yearInput').val(currentYear);
+            highlightYearInDropdown(currentYear);
         }
 
-
-    // ======= Tạo dropdown =======
-    createDropdownInput('yearInput', 'Năm', Array.from({length: currentYear - 1999 }, (_, i) => 2000 + i), currentYear, updateDates);
-
-    if (selectedValue === 'Quy') {
-        createDropdownInput('quyInput', 'Quý', [1, 2, 3, 4], currentQuy, updateDates);
-       
-		} else if (selectedValue === 'Thang') {
-        createDropdownInput('thangInput', 'Tháng', Array.from({ length: 12 }, (_, i) => i + 1), currentMonth, updateDates);
-		} else if (selectedValue === 'Ngay') {
-        container.empty();
-       
-		}
-
-    if (selectedValue !== 'Ngay') {
-        updateDates();
+        if (selectedValue === 'Nam') {
+            $('#ngayTuNgay').val(`01-01-${year}`);
+            $('#ngayDenNgay').val(`31-12-${year}`);
         }
-      if (selectedValue === 'Nam' || selectedValue === 'Quy' || selectedValue === 'Thang') {
+        else if (selectedValue === 'Quy') {
+            let quy = parseInt($('#quyInput').val(), 10);
+            if (!Number.isFinite(quy)) quy = currentQuy;
+            if (quy < 1) quy = 1;
+            if (quy > 4) quy = 4;
+            $('#quyInput').val(quy);
+
+            const startMonth = (quy - 1) * 3 + 1;
+            const endMonth = startMonth + 2;
+            $('#ngayTuNgay').val(formatDate(new Date(year, startMonth - 1, 1)));
+            $('#ngayDenNgay').val(formatDate(new Date(year, endMonth, 0)));
+        }
+        else if (selectedValue === 'Thang') {
+            let month = parseInt($('#thangInput').val(), 10);
+            if (!Number.isFinite(month)) month = currentMonth;
+            if (month < 1) month = 1;
+            if (month > 12) month = 12;
+            $('#thangInput').val(month);
+
+            const { start, end } = getMonthDateRange(year, month);
+            $('#ngayTuNgay').val(formatDate(start));
+            $('#ngayDenNgay').val(formatDate(end));
+        }
+        else if (selectedValue === 'Ngay') {
+            const today = new Date(Date.now());
+            const todayStr = formatDate(today);
+            $('#ngayTuNgay').val(todayStr);
+            $('#ngayDenNgay').val(todayStr);
+        }
+
+        if (selectedValue === 'Nam' || selectedValue === 'Quy' || selectedValue === 'Thang') {
             $('#ngayTuNgay, #ngayDenNgay').prop('disabled', true);
         } else {
             $('#ngayTuNgay, #ngayDenNgay').prop('disabled', false);
         }
-	});
+
+        $('#ngayTuNgay').datepicker('setDate', $('#ngayTuNgay').val());
+        $('#ngayDenNgay').datepicker('setDate', $('#ngayDenNgay').val());
+    }
+
+    const startYear = 2000;
+    const yearOptions = Array.from({ length: currentYear - startYear + 1 }, (_, i) => startYear + i);
+    createDropdownInput('yearInput', 'Năm', yearOptions, currentYear, updateDates, 4);
+    $(document)
+        .off('blur', '#yearInput')
+        .on('blur', '#yearInput', function () {
+            let val = parseInt($(this).val(), 10);
+            if (!Number.isFinite(val) || val > currentYear || val < 0) val = currentYear;
+            $(this).val(val);
+
+            $('#quyInputDropdown').find('.dropdown-item').removeClass('active bg-primary text-white');
+            $('#quyInputDropdown').find(`[data-val="${val}"]`).addClass('active bg-primary text-white');
+
+            updateDates();
+        });
+
+    // ================== QUÝ ==================
+    if (selectedValue === 'Quy') {
+        createDropdownInput('quyInput', 'Quý', [1, 2, 3, 4], currentQuy, updateDates, 1);
+
+        $(document)
+            .off('blur', '#quyInput')
+            .on('blur', '#quyInput', function () {
+                let val = parseInt($(this).val(), 10);
+                if (!Number.isFinite(val) || val < 1 || val > 4) val = 1;
+                $(this).val(val);
+
+                $('#quyInputDropdown').find('.dropdown-item').removeClass('active bg-primary text-white');
+                $('#quyInputDropdown').find(`[data-val="${val}"]`).addClass('active bg-primary text-white');
+
+                updateDates();
+            });
+    }
+
+    // ================== THÁNG ==================
+    else if (selectedValue === 'Thang') {
+        createDropdownInput('thangInput', 'Tháng', Array.from({ length: 12 }, (_, i) => i + 1), currentMonth, updateDates, 2);
+
+        $(document)
+            .off('blur', '#thangInput')
+            .on('blur', '#thangInput', function () {
+                let val = parseInt($(this).val(), 10);
+                if (!Number.isFinite(val) || val < 1 || val > 12) val = 1;
+                $(this).val(val);
+
+                $('#thangInputDropdown').find('.dropdown-item').removeClass('active bg-primary text-white');
+                $('#thangInputDropdown').find(`[data-val="${val}"]`).addClass('active bg-primary text-white');
+
+                updateDates();
+            });
+    }
+
+    else if (selectedValue === 'Ngay') {
+        container.empty();
+    }
+
+    updateDates();
+});
 //=============== GLOBAL FUNCTION =======================
 function parseDMY(s) {
     const parts = s.split('-');

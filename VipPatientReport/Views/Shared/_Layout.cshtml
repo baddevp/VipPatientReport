@@ -43,9 +43,10 @@
             &copy; 2025 - VipPatientReport - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="/dist/js/BienChung.js" asp-append-version="true" defer></script>
+    
     <script src="@Url.Content("~/dist/lib/Jquery/jquery.min.js")" defer></script>
     <script src="@Url.Content("~/dist/lib/Jquery/jquery.inputmask.js")" defer></script>
+    <script src="/dist/js/BienChung.js" asp-append-version="true" defer></script>
    
     @await RenderSectionAsync("Scripts", required: false)
 </body>

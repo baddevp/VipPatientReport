@@ -66,18 +66,18 @@ namespace VipPatientReport.Controllers.C0301
         [HttpPost("export/pdf")]
         public async Task<IActionResult> ExportToPDF([FromBody] M0301ExportRequest request)
         {
-            var pdfBytes = await _service.ExportBaoCaoGoiKhamPdfAsync(request, HttpContext.Session);
+            var pdfBytes = await _service.ExportThongKeBenhNhanVipPdfAsync(request, HttpContext.Session);
 
-            string fileName = $"BaoCaoGoiKham_{request.FromDate ?? "all"}_den_{request.ToDate ?? "now"}.pdf";
+            string fileName = $"ThongKeBenhNhanVip_{request.FromDate ?? "all"}_den_{request.ToDate ?? "now"}.pdf";
             return File(pdfBytes, "application/pdf", fileName);
         }
 
         [HttpPost("export/excel")]
         public async Task<IActionResult> ExportToExcel([FromBody] M0301ExportRequest request)
         {
-            var excelBytes = await _service.ExportBaoCaoGoiKhamExcelAsync(request, HttpContext.Session);
+            var excelBytes = await _service.ExportThongKeBenhNhanVipExcelAsync(request, HttpContext.Session);
 
-            string fileName = $"BaoCaoGoiKham_{request.FromDate ?? "all"}_den_{request.ToDate ?? "now"}.xlsx";
+            string fileName = $"ThongKeBenhNhanVip_{request.FromDate ?? "all"}_den_{request.ToDate ?? "now"}.xlsx";
             return File(excelBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
     }
